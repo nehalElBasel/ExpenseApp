@@ -24,7 +24,10 @@ class ExpenseList extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
               ),
               subtitle: Text(formatDate(expenses[index].date)),
-              leading: Image.asset(categories[expenses[index].category]!),
+              leading: ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.asset(categories[expenses[index].category]!),
+              ),
               trailing: Text(
                 "\$ ${expenses[index].amount.toStringAsFixed(2)}",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
