@@ -1,6 +1,8 @@
+import 'package:expense_tracker_app/cubit/add_expense_cubit.dart';
 import 'package:expense_tracker_app/models/expense.dart';
 import 'package:expense_tracker_app/widgets/expenses_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ExpensesView extends StatelessWidget {
   const ExpensesView({super.key});
@@ -56,7 +58,7 @@ class ExpensesView extends StatelessWidget {
                     style: TextStyle(color: Colors.grey[700], fontSize: 15),
                   ),
                   Text(
-                    "\$10203030",
+                    "\$ ${BlocProvider.of<AddExpenseCubit>(context).extenseSummation}",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 25,
@@ -66,6 +68,8 @@ class ExpensesView extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(height: 10),
+
             SizedBox(height: 10),
             Expanded(child: ExpenseList()),
           ],

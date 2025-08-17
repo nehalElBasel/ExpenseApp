@@ -21,11 +21,10 @@ class _AddExpenseViewState extends State<AddExpenseView> {
 
   late double amount;
 
-  late String? describtion, category;
+  late String? describtion;
+  late String? category = "food";
 
   String? _validate_amount(String? val) {
-    print("_validate_amount aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-    print(val);
     if (val == "") {
       return "Please Enter Valid Amount";
     }

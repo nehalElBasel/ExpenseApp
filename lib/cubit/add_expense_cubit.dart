@@ -4,12 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddExpenseCubit extends Cubit<ExpenseStates> {
   List<ExpenseModel> expenses = [];
+  double extenseSummation = 0;
   AddExpenseCubit() : super(NoExpenses());
 
   addExpense(ExpenseModel expense) {
-    print("addExpense cubitttt");
     try {
       expenses.add(expense);
+      extenseSummation += expense.amount;
 
       emit(AddedExpenses());
     } catch (e) {
