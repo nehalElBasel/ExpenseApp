@@ -77,7 +77,12 @@ class _AddExpenseViewState extends State<AddExpenseView> {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+        padding: EdgeInsets.only(
+          left: 25,
+          right: 25,
+          top: 10,
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
         child: Form(
           key: formKey,
           child: Column(

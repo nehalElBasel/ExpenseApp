@@ -12,7 +12,9 @@ class ExpenseModel {
 }
 
 Map<String, String> categories = {
-  "food": "assets/images/categories/food.png",
-  "uber": "assets/images/categories/food.png",
+  "food": "assets/images/categories/food.jpg",
+  "uber": "assets/images/categories/bus.png",
   "pets": "assets/images/categories/pet.png",
+  "education": "assets/images/categories/education.png",
+  "cinema": "assets/images/categories/cinema.png",
 };
