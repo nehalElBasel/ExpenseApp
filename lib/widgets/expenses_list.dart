@@ -1,3 +1,4 @@
+import 'package:expense_tracker_app/constants/app_colors.dart';
 import 'package:expense_tracker_app/cubit/add_expense_cubit.dart';
 import 'package:expense_tracker_app/models/expense.dart';
 import 'package:expense_tracker_app/utilites/utilites_functions.dart';
@@ -16,6 +17,7 @@ class ExpenseList extends StatelessWidget {
       itemCount: expenses.length,
       itemBuilder:
           (ctx, index) => Card(
+            color: AppCololrs.formInputFilledColor,
             child: ListTile(
               title: Text(
                 expenses[index].title,
