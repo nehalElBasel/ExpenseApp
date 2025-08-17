@@ -1,3 +1,4 @@
+import 'package:expense_tracker_app/constants/app_colors.dart';
 import 'package:expense_tracker_app/cubit/add_expense_cubit.dart';
 import 'package:expense_tracker_app/cubit/add_expense_states.dart';
 import 'package:expense_tracker_app/cubit/pickup_date_picker_cubit.dart';
@@ -24,6 +25,10 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Expense Tracker App',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          scaffoldBackgroundColor: AppCololrs.scafoldBacckgroundColor,
+        ),
 
         home: BlocBuilder<AddExpenseCubit, ExpenseStates>(
           builder: (context, state) {

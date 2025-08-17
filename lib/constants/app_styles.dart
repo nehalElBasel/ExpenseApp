@@ -43,4 +43,15 @@ class AppStyles {
     padding: EdgeInsets.symmetric(vertical: 15),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(13)),
   );
+
+  static final TextStyle homeCntainerTextStyle = TextStyle(
+    color: AppCololrs.addExpenseSubTitleColor,
+    fontSize: 15,
+  );
+
+  static final TextStyle homeCntainerAmountTextStyle = TextStyle(
+    color: Colors.white,
+    fontSize: 25,
+    fontWeight: FontWeight.bold,
+  );
 }

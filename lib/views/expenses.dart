@@ -1,3 +1,5 @@
+import 'package:expense_tracker_app/constants/app_colors.dart';
+import 'package:expense_tracker_app/constants/app_styles.dart';
 import 'package:expense_tracker_app/cubit/add_expense_cubit.dart';
 import 'package:expense_tracker_app/models/expense.dart';
 import 'package:expense_tracker_app/widgets/expenses_list.dart';
@@ -11,7 +13,6 @@ class ExpensesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 246, 246, 238),
       appBar: AppBar(
         title: ListTile(
           leading: ClipRRect(
@@ -34,11 +35,7 @@ class ExpensesView extends StatelessWidget {
           ),
         ],
       ),
-      // floatingActionButton: FloatingActionButton.extended(
-      //   label: Text("Add"),
-      //   onPressed: () {},
-      //   icon: Icon(Icons.add),
-      // ),
+
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: Column(
@@ -48,22 +45,15 @@ class ExpensesView extends StatelessWidget {
               padding: EdgeInsets.all(30),
               // alignment: Alignment.bottomLeft,
               decoration: BoxDecoration(
-                color: Colors.black,
+                color: AppCololrs.homecontainerColor,
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Column(
                 children: [
-                  Text(
-                    "spent for now",
-                    style: TextStyle(color: Colors.grey[700], fontSize: 15),
-                  ),
+                  Text("spent for now", style: AppStyles.homeCntainerTextStyle),
                   Text(
                     "\$ ${BlocProvider.of<AddExpenseCubit>(context).extenseSummation}",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: AppStyles.homeCntainerAmountTextStyle,
                   ),
                 ],
               ),
