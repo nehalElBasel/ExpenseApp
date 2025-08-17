@@ -1,4 +1,5 @@
 import 'package:expense_tracker_app/models/expense.dart';
+import 'package:expense_tracker_app/widgets/expenses_list.dart';
 import 'package:flutter/material.dart';
 
 class ExpensesView extends StatelessWidget {
@@ -66,34 +67,7 @@ class ExpensesView extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            Expanded(
-              child: ListView.builder(
-                itemCount: 10,
-                itemBuilder:
-                    (ctx, index) => Card(
-                      child: ListTile(
-                        title: Text(
-                          "tit",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                          ),
-                        ),
-                        subtitle: Text("sub"),
-                        leading: Image.asset(
-                          "assets/images/categories/bus.png",
-                        ),
-                        trailing: Text(
-                          "\$5657",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
-                    ),
-              ),
-            ),
+            Expanded(child: ExpenseList()),
           ],
         ),
       ),

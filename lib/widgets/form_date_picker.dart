@@ -1,6 +1,10 @@
 import 'package:expense_tracker_app/constants/app_colors.dart';
 import 'package:expense_tracker_app/constants/app_styles.dart';
+import 'package:expense_tracker_app/cubit/pickup_date_picker_cubit.dart';
+import 'package:expense_tracker_app/cubit/pickup_date_picker_states.dart';
+import 'package:expense_tracker_app/utilites/utilites_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 class FormDatePicker extends StatefulWidget {
@@ -12,25 +16,6 @@ class FormDatePicker extends StatefulWidget {
 
 class _FormDatePickerState extends State<FormDatePicker> {
   DateTime _selectedDate = DateTime.now();
-
-  Future<void> _pickDate() async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(), // default today
-      firstDate: DateTime(2025), // earliest allowed date
-      lastDate: DateTime(2026), // latest allowed date
-    );
-
-    if (picked != null && picked != _selectedDate) {
-      setState(() {
-        _selectedDate = picked;
-      });
-    }
-  }
-
-  String _formatDate(DateTime date) {
-    return DateFormat('MMM d, yyyy').format(date);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +32,24 @@ class _FormDatePickerState extends State<FormDatePicker> {
             decoration: AppStyles.containerDecoration,
             child: Row(
               children: [
-                Text(_formatDate(_selectedDate)),
+                BlocBuilder<PickUpDatePickerCubit, PickUpDatePickerState>(
+                  builder: (context, state) {
+                    if (state is PickedDateState) {
+                      return Text(formatDate(state.date));
+                    } else {
+                      return Text(formatDate(_selectedDate));
+                    }
+                  },
+                ),
                 Spacer(),
-                IconButton(onPressed: _pickDate, icon: Icon(Icons.date_range)),
+                IconButton(
+                  onPressed: () async {
+                    await BlocProvider.of<PickUpDatePickerCubit>(
+                      context,
+                    ).pickDate(context);
+                  },
+                  icon: Icon(Icons.date_range),
+                ),
               ],
             ),
           ),

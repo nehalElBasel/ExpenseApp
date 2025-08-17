@@ -2,9 +2,17 @@ import 'package:expense_tracker_app/constants/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class TextFormInput extends StatelessWidget {
-  const TextFormInput({super.key, required this.title, this.isAmount = false});
+  const TextFormInput({
+    super.key,
+    required this.title,
+    required this.validator,
+    required this.onSaved,
+    this.isAmount = false,
+  });
   final String title;
   final bool isAmount;
+  final String? Function(String?) validator;
+  final void Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +31,8 @@ class TextFormInput extends StatelessWidget {
                       prefixIcon: Icon(Icons.attach_money),
                     )
                     : AppStyles.textFormFieldDecoration,
+            validator: validator,
+            onSaved: onSaved,
           ),
         ],
       ),

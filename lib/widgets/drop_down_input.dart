@@ -3,8 +3,13 @@ import 'package:expense_tracker_app/models/expense.dart';
 import 'package:flutter/material.dart';
 
 class DropDownFormInput extends StatelessWidget {
-  const DropDownFormInput({super.key, required this.title});
+  const DropDownFormInput({
+    super.key,
+    required this.title,
+    required this.onChanged,
+  });
   final String title;
+  final void Function(String?)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,7 @@ class DropDownFormInput extends StatelessWidget {
                       ),
                     )
                     .toList(),
-            onChanged: (val) {},
+            onChanged: onChanged,
           ),
         ],
       ),
